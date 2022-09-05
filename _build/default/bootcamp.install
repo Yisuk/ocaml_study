@@ -1,0 +1,11 @@
+lib: [
+  "_build/install/default/lib/bootcamp/META"
+  "_build/install/default/lib/bootcamp/dune-package"
+  "_build/install/default/lib/bootcamp/opam"
+]
+bin: [
+  "_build/install/default/bin/bootcamp"
+]
+doc: [
+  "_build/install/default/doc/bootcamp/README.md"
+]

@@ -1,0 +1,6 @@
+(** @canonical Bootcamp.Aoc2020day3 *)
+module Aoc2020day3 = Bootcamp__Aoc2020day3
+
+
+(** @canonical Bootcamp.Util *)
+module Util = Bootcamp__Util
