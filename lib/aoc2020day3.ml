@@ -1,16 +1,30 @@
 let filePath = "./input/aoc2020day3.txt"
 
 type slope = { x : int; y : int }
+type grid = OPEN_SQUARE | TREE
+
+let parse input =
+  match input with
+  | "#" -> Option.Some TREE
+  | "." -> Option.Some OPEN_SQUARE
+  | _ -> Option.None
 
 let getTrajectory input slope =
-  List.filteri (fun index _inputRow -> index mod slope.y = 0) input
+  input
+  |> List.filteri (fun index _inputRow -> index mod slope.y = 0)
   |> List.mapi (fun index inputRow ->
          String.get inputRow (index * slope.x mod String.length inputRow))
   |> List.map (String.make 1)
+  |> List.map parse
 
 let getNumberOfEncounters trajectory =
   trajectory
-  |> List.fold_left (fun acc value -> if value = "#" then acc + 1 else acc) 0
+  |> List.fold_left
+       (fun acc value ->
+         match value with
+         | Option.Some TREE -> acc + 1
+         | Option.Some OPEN_SQUARE | Option.None -> acc)
+       0
 
 let solvePart1 () =
   let slope = { x = 3; y = 1 } in
